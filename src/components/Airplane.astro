@@ -4,7 +4,7 @@ const { message } = Astro.props;
 
 <div class="airplane-container">
   <div class="message-trail">{message}</div>
-  <img src="/airplane.png" alt="airplane" class="airplane" />
+  <div class="airplane"></div>
 </div>
 
 <style>
@@ -18,8 +18,10 @@ const { message } = Astro.props;
   }
 
   .airplane {
-    width: 100px;
-    height: auto;
+    width: 100px; /* Ajusta según el tamaño deseado */
+    height: 100px;/* Ajusta según el tamaño deseado */
+    background: url('/airplane.png') no-repeat center center;
+    background-size: contain; /* Ajusta la imagen dentro del div */
   }
 
   .message-trail {
