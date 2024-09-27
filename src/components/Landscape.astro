@@ -2,6 +2,7 @@
 import Sun from './Sun.astro';
 import Sunflower from './Sunflower.astro';
 import Cloud from './Cloud.astro';
+import Airplane from './Airplane.astro';
 
 function getRandomInRange(min: number, max: number) {
   return Math.random() * (max - min) + min;
@@ -28,7 +29,9 @@ const cloudsWithDelay = Array.from({ length: numClouds }).map(() => ({
     <Sunflower sunflowerClass="sunflower1" />
     <Sunflower sunflowerClass="sunflower2" />
   </div>
-  
+
+  <Airplane message="Ánimo, cariño! ✨" />
+
   <div id="cloud-container">
     {clouds.map((cloud, index) => (
       <Cloud cloudClass={`cloud${index}`} speed={cloud.speed} top={cloud.top} />
@@ -43,6 +46,7 @@ const cloudsWithDelay = Array.from({ length: numClouds }).map(() => ({
 
   <!-- Añadir suelo aquí -->
   <div class="ground"></div>
+  
 </div>
 
 <style>
@@ -71,7 +75,6 @@ const cloudsWithDelay = Array.from({ length: numClouds }).map(() => ({
     left: 0;
   }
 
-  /* Suelo */
   .ground {
     position: absolute;
     bottom: 0;

@@ -1,0 +1,56 @@
+---
+const { message } = Astro.props;
+---
+
+<div class="airplane-container">
+  <div class="message-trail">{message}</div>
+  <img src="/airplane.png" alt="airplane" class="airplane" />
+</div>
+
+<style>
+  .airplane-container {
+    position: absolute;
+    top: 20%;
+    left: -300px;
+    display: flex;
+    align-items: center;
+    animation: flyAcross 10s linear infinite;
+  }
+
+  .airplane {
+    width: 100px;
+    height: auto;
+  }
+
+  .message-trail {
+    font-size: 1.5rem;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 5px 10px;
+    border-radius: 3px;
+    margin-left: 10px;
+    white-space: nowrap;
+    animation: fadeTrail 20s linear infinite;
+  }
+
+  @keyframes flyAcross {
+    0% {
+      left: -300px;
+    }
+    100% {
+      left: 100vw;
+    }
+  }
+
+  @keyframes fadeTrail {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+</style>
