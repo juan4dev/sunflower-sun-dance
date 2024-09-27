@@ -1,0 +1,24 @@
+<div class="sun"></div>
+
+<style>
+  .sun {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background: url('/sun_pixel_art.png') no-repeat center center;
+    background-size: contain;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: sunEllipse 120s linear infinite; /* Duración más larga para que se mueva más lento */
+    animation-delay: 4s; /* Añadir un retraso de 4 segundos antes de que vuelva a aparecer */
+  }
+
+  @keyframes sunEllipse {
+    0% { left: 10%; top: 70%; }
+    25% { left: 25%; top: 40%; }
+    50% { left: 50%; top: 20%; }
+    75% { left: 75%; top: 40%; }
+    100% { left: 90%; top: 70%; }
+  }
+</style>

@@ -1,0 +1,83 @@
+---
+import Sun from './Sun.astro';
+import Sunflower from './Sunflower.astro';
+import Cloud from './Cloud.astro';
+
+function getRandomInRange(min: number, max: number) {
+  return Math.random() * (max - min) + min;
+}
+
+const numClouds = Math.floor(getRandomInRange(10, 40));
+
+const clouds = Array.from({ length: numClouds }).map(() => ({
+  speed: `${getRandomInRange(50, 100)}s`,
+  top: `${getRandomInRange(5, 50)}%`
+}));
+
+const cloudsWithDelay = Array.from({ length: numClouds }).map(() => ({
+  speed: `${getRandomInRange(50, 100)}s`,
+  top: `${getRandomInRange(5, 50)}%`,
+  delay: `${getRandomInRange(2, 10)}s`
+}));
+---
+
+<div class="scene">
+  <Sun />
+  
+  <div class="sunflowers">
+    <Sunflower sunflowerClass="sunflower1" />
+    <Sunflower sunflowerClass="sunflower2" />
+  </div>
+  
+  <div id="cloud-container">
+    {clouds.map((cloud, index) => (
+      <Cloud cloudClass={`cloud${index}`} speed={cloud.speed} top={cloud.top} />
+    ))}
+  </div>
+  
+  <div id="cloud-container-2">
+    {cloudsWithDelay.map((cloud, index) => (
+      <Cloud cloudClass={`cloud${index}`} speed={cloud.speed} top={cloud.top} delay={cloud.delay} />
+    ))}
+  </div>
+
+  <!-- Añadir suelo aquí -->
+  <div class="ground"></div>
+</div>
+
+<style>
+  .scene {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-color: #87ceeb;
+    overflow: hidden;
+  }
+
+  .sunflowers {
+    position: absolute;
+    bottom: 50px; 
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 1px;
+  }
+
+  #cloud-container, #cloud-container-2 {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
+
+  /* Suelo */
+  .ground {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 250px;
+    background: url('pixel_art_soil_texture.png') repeat; /* Imagen de la textura del suelo */
+    background-size: cover;
+  }
+</style>
